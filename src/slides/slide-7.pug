@@ -1,0 +1,56 @@
+section
+    section
+        img(src="img/talk-is-cheap-show-me-the-code.jpg", alt="")
+    section(data-background-color='#446971')
+        p Trabalhar com imagens
+        pre
+            code.python.
+                icone = pygame.image.load("icone.png")
+
+        pre
+            code.python.
+                # Function Load Image
+                def load_image(image_name):
+                    """Carrega uma imagem na memoria"""
+                    fullname = os.path.join("images", image_name)
+                    try:
+                        image = pygame.image.load(fullname)
+                    except pygame.error:
+                        print("Cannot load image: ", fullname)
+                        raise SystemExit
+
+                    return image, image.get_rect()
+
+    section(data-background-color='#446971')
+        p Trabalhar com eventos do Mouse
+        pre
+            code.python.
+                pygame.mouse.get_pressed()[0] // left button
+                pygame.mouse.get_pressed()[1] // center button
+                pygame.mouse.get_pressed()[2] // right button
+
+                pygame.mouse.get_pos() //posicao do mouse
+    section
+        p Trabalhar com Rects
+        pre
+            code.python.
+                #carrega a imagem e a posiciona na tela
+                self.image, self.rect = load_image("green-bar.png")
+                self.rect.centerx = startpos[0]
+                self.rect.centery = startpos[1]
+    section
+        p
+        pre
+            code.python.
+                #checa eventos de teclado
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        sys.exit()
+                    elif event.type == pygame.KEYDOWN:
+                        if event.key == pygame.K_LEFT:
+                            bar.direction = -1
+
+                        if event.key == pygame.K_RIGHT:
+                            bar.direction = 1
+    section
+        h3 Infinitas viagens
